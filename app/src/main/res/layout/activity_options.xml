@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/options"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:onClick="goMain"
+    android:theme="@android:style/Theme.Translucent"
+    tools:context=".OptionsActivity">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/optionsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="24dp"
+        android:clickable="true"
+        android:onClick="goMain"
+        android:rotation="45"
+        android:scaleType="centerInside"
+        android:visibility="visible"
+        app:backgroundTint="#FFC107"
+        app:elevation="4dp"
+        app:fabCustomSize="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="35dp"
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:tint="#FFFFFF" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton3"
+        android:layout_width="49dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="24dp"
+        android:clickable="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_facebook"
+        app:backgroundTint="#3F51B5"
+        app:fabCustomSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/optionsButton"
+        app:layout_constraintEnd_toEndOf="@+id/optionsButton"
+        app:layout_constraintStart_toStartOf="@+id/optionsButton"
+        app:tint="#FFF" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton4"
+        android:layout_width="49dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="24dp"
+        android:clickable="true"
+        android:onClick="showRecipe"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_network"
+        app:backgroundTint="@color/red_200"
+        app:fabCustomSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton3"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButton3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/floatingActionButton3"
+        app:tint="#FFF" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="619dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
