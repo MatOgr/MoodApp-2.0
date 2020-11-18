@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class DataLoader {
     private Map<String, String> moodData;
 
-
+    // TODO: 18.11.2020 look at the API version reqs
     public String loadString() throws MalformedURLException {
         URL urlAddr = new URL("https://moodup.team/test/info.php");
 
