@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoodApp">
-        <activity android:name=".Recipe"></activity>
+        <activity android:name=".RecipeActivity"></activity>
         <activity
             android:name=".OptionsActivity"
             android:theme="@style/Theme.Transparent" />

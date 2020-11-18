@@ -20,7 +20,7 @@ public class OptionsActivity extends AppCompatActivity {
     }
 
     public void showRecipe(View view) {
-        Intent intent = new Intent(this, Recipe.class);
+        Intent intent = new Intent(this, RecipeActivity.class);
         startActivity(intent);
         this.finish();
     }
