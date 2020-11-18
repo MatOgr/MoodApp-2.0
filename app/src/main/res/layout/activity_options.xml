@@ -5,7 +5,7 @@
     android:id="@+id/options"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
+    android:background="#CCFFFFFF"
     android:onClick="goMain"
     android:theme="@android:style/Theme.Translucent"
     tools:context=".OptionsActivity">
@@ -69,4 +69,35 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="619dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/rounded_rect"
+        android:elevation="2dp"
+        android:padding="5dp"
+        android:text="Zaloguj przez Facebooka"
+        android:textColor="#817C7C"
+        app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton3"
+        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton3"
+        app:layout_constraintTop_toTopOf="@+id/floatingActionButton3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/rounded_rect"
+        android:elevation="2dp"
+        android:padding="5dp"
+        android:text="Get the recipe"
+        android:textColor="#817C7C"
+        app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton4"
+        app:layout_constraintCircleRadius="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton4"
+        app:layout_constraintTop_toTopOf="@+id/floatingActionButton4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
