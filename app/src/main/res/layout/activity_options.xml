@@ -11,7 +11,7 @@
     tools:context=".OptionsActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/optionsButton"
+        android:id="@+id/optionsButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -38,12 +38,12 @@
         android:layout_marginBottom="24dp"
         android:clickable="true"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_facebook"
+        android:src="@drawable/ic_facebook_logo"
         app:backgroundTint="#3F51B5"
         app:fabCustomSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/optionsButton"
-        app:layout_constraintEnd_toEndOf="@+id/optionsButton"
-        app:layout_constraintStart_toStartOf="@+id/optionsButton"
+        app:layout_constraintBottom_toTopOf="@+id/optionsButton2"
+        app:layout_constraintEnd_toEndOf="@+id/optionsButton2"
+        app:layout_constraintStart_toStartOf="@+id/optionsButton2"
         app:tint="#FFF" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

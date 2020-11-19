@@ -1,5 +1,7 @@
 package com.example.moodapp;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,12 +12,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class DataLoader {
-    private Map<String, String> moodData;
+public class DictionaryMaker extends AppCompatActivity implements DMInterface {
 
-    // TODO: 18.11.2020 look at the API version reqs
-    public String loadString() throws MalformedURLException {
-        URL urlAddr = new URL("https://moodup.team/test/info.php");
+    // loads site content and formats it to appropriate string
+    public String loadString(String url) {
+        URL urlAddr = null;
+        try {
+            urlAddr = new URL(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
         ArrayList<String> tablice = new ArrayList<>();
         String unformattedString = null;
@@ -33,7 +39,7 @@ public class DataLoader {
         unformattedString = unformattedString.substring(1, unformattedString.length()-1)
                 .trim()
                 .replaceAll(" \\[    ", "\\[").replaceAll("    ", "");
-        System.out.println(unformattedString + '\n');
+        //System.out.println(unformattedString + '\n');
 
         // getting the arrays out
         int i = 0;
@@ -44,12 +50,12 @@ public class DataLoader {
                     .substring(2, tablice.get(i).length()-1)
                     .replaceAll("\",\"", "=")
                     .replaceAll("\"", ""));
-            System.out.println((i) + " tablica: " + tablice.get(i));
+            //System.out.println((i) + " tablica: " + tablice.get(i));
             i+=1;
         }
         unformattedString = unformattedString.replaceAll(":", "::");
         String result = "";
-        System.out.println("Liczba tablic: " + tablice.size() + "\n\nA oto nasza tablica do slownika:\n");
+        //System.out.println("Liczba tablic: " + tablice.size() + "\n\nA oto nasza tablica do slownika:\n");
         for (String x : unformattedString.split("\",\"")) {
             result += '#' + x.replaceAll("\"", "");
         }
@@ -57,27 +63,25 @@ public class DataLoader {
         for (i = 0; i < tablice.size(); i++) {
             result = result.replaceFirst(String.format("##tablica_%d##", i), tablice.get(i));
         }
-        System.out.println(result.substring(1));
+        //System.out.println(result.substring(1));
 
         return result.substring(1);
     }
 
-
-    public Map<String, String> getMoodData() {
-        return moodData;
-    }
-
-    public void setMoodData(Map<String, String> moodData) {
-        this.moodData = moodData;
-    }
-
+    // creates Map from passed-in String
     public Map<String, String> makeMap(String data) {
         Map<String, String> dataMap = new HashMap<>();
         for (String x : data.split("#")) {
-            System.out.println("Linia: " + x);
+            //System.out.println("Linia: " + x);
             String[] a = x.split("::");
             dataMap.put(a[0], a[1]);
         }
         return dataMap;
+    }
+
+    public String testFunc(String url) {
+
+
+        return " ";
     }
 }
