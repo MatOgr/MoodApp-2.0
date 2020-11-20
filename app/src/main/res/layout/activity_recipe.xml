@@ -39,22 +39,22 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/dishNameText"
+                android:id="@+id/dishTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
-                android:text="Pizza:"
+                android:text="Pizza_test:"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/dishDescriptionText"
+                app:layout_constraintBottom_toTopOf="@id/dishDescription"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/dishDescriptionText"
+                android:id="@+id/dishDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"
@@ -62,13 +62,13 @@
                 android:layout_marginEnd="48dp"
                 android:layout_marginRight="48dp"
                 android:text="Pizza jest potrawą kuchni włoskiej, obecnie szeroko rozpowszechnioną na całym świecie i zaliczaną do dań typu fast food. W wersji podstawowej jest to płaski placek z wytrawnego ciasta makaronowego; znacznie później zaczęto także używać ciasta drożdżowego (focaccia). Pizza pieczona jest w bardzo mocno nagrzanym piecu."
-                app:layout_constraintBottom_toTopOf="@+id/ingredientsNameText"
+                app:layout_constraintBottom_toTopOf="@+id/ingredientsTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dishNameText" />
+                app:layout_constraintTop_toBottomOf="@+id/dishTitle" />
 
             <TextView
-                android:id="@+id/ingredientsNameText"
+                android:id="@+id/ingredientsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -78,12 +78,12 @@
                 android:text="Ingredients_test:"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/ingredientsDescriptionText"
+                app:layout_constraintBottom_toTopOf="@id/ingredientsDescription"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dishDescriptionText" />
+                app:layout_constraintTop_toBottomOf="@+id/dishDescription" />
 
             <TextView
-                android:id="@+id/ingredientsDescriptionText"
+                android:id="@+id/ingredientsDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"
@@ -95,10 +95,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ingredientsNameText" />
+                app:layout_constraintTop_toBottomOf="@+id/ingredientsTitle" />
 
             <TextView
-                android:id="@+id/preparingNameText"
+                android:id="@+id/preparingTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -108,12 +108,12 @@
                 android:text="Preparing_test:"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/preparingDescriptionText"
+                app:layout_constraintBottom_toTopOf="@+id/preparingDescription"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ingredientsDescriptionText" />
+                app:layout_constraintTop_toBottomOf="@+id/ingredientsDescription" />
 
             <TextView
-                android:id="@+id/preparingDescriptionText"
+                android:id="@+id/preparingDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"
@@ -121,13 +121,13 @@
                 android:layout_marginEnd="48dp"
                 android:layout_marginRight="48dp"
                 android:text="Pizza jest potrawą kuchni włoskiej, obecnie szeroko rozpowszechnioną na całym świecie i zaliczaną do dań typu fast food. W wersji podstawowej jest to płaski placek z wytrawnego ciasta makaronowego; znacznie później zaczęto także używać ciasta drożdżowego (focaccia). Pizza pieczona jest w bardzo mocno nagrzanym piecu."
-                app:layout_constraintBottom_toTopOf="@+id/imagesText"
+                app:layout_constraintBottom_toTopOf="@+id/imagesTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/preparingNameText" />
+                app:layout_constraintTop_toBottomOf="@+id/preparingTitle" />
 
             <TextView
-                android:id="@+id/imagesText"
+                android:id="@+id/imagesTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -139,7 +139,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/preparingDescriptionText" />
+                app:layout_constraintTop_toBottomOf="@+id/preparingDescription" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
@@ -149,7 +149,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imagesText">
+                app:layout_constraintTop_toBottomOf="@id/imagesTitle">
 
                 <ImageButton
                     android:id="@+id/imageButton2"

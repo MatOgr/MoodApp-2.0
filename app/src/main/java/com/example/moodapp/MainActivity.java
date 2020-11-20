@@ -3,6 +3,7 @@ package com.example.moodapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,9 +25,7 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_URL = "https://moodup.team/test/info.php";
 //    public Map<String, String> dictionary = new HashMap<>();
-    private TextView mTextViewResult;      //JSON
     private RequestQueue mQueue;        //JSON
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,31 +33,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //String test = loadString(EXTRA_URL);
 //////////////////////////////
-        mTextViewResult = findViewById(R.id.jsonTest);
         mQueue = Volley.newRequestQueue(this);
-        jsonParse();
-
-
-
-        /////////////////////////////
-        CircularImageView circleImage = findViewById(R.id.circularImg);
-        Picasso.get()
-                .load("https://cf.bstatic.com/images/hotel/max1024x768/226/226214922.jpg")
-                .into(circleImage);
+        jsonParseImg(EXTRA_URL);
+        ///////////////////////////////////
     }
 
-    private void jsonParse() {
-        String url = "https://moodup.team/test/info.php";
+    // loads pictures from JSON into CircularImageView
+    private void jsonParseImg(String url) {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray jsonArray = response.getJSONArray("ingredients");
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                String ingredient = jsonArray.getString(i);
-                                mTextViewResult.append(ingredient+"\n");
-                            }
+                            JSONArray jsonArray = response.getJSONArray("imgs");
+
+                            Picasso.get()
+                                    .load(jsonArray.getString(0)
+                                            .replace("http://mooduplabs.com", "https://moodup.team"))
+                                    .into((CircularImageView) MainActivity.this.findViewById(R.id.circularImg));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

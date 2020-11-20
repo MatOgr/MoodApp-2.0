@@ -44,6 +44,7 @@
         android:layout_width="249dp"
         android:layout_height="254dp"
         android:alpha="0.6"
+        android:scaleType="centerCrop"
         app:civ_border="false"
         app:civ_shadow="true"
         app:civ_shadow_color="#6470B3"
@@ -54,7 +55,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/jsonTest"
+        android:id="@+id/CircularImageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha="0.9"
@@ -66,16 +67,6 @@
         app:layout_constraintEnd_toEndOf="@+id/circularImg"
         app:layout_constraintStart_toStartOf="@+id/circularImg"
         app:layout_constraintTop_toTopOf="@+id/circularImg" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/circularImg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
