@@ -67,9 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void showOptions(View view) {
         Intent intent = new Intent(this, OptionsActivity.class);
+        intent.putExtra(EXTRA_URL, EXTRA_URL);
         startActivity(intent);
     }
 
+    public RequestQueue getmQueue() {
+        return mQueue;
+    }
 }
 
 //Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry">Kiranshastry</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
