@@ -1,6 +1,7 @@
 package com.example.moodapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
@@ -28,6 +29,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,53 +43,54 @@ import static com.example.moodapp.MainActivity.EXTRA_URL;
 
 public class RecipeActivity extends AppCompatActivity {
 
-    private RequestQueue mQueue;        //JSON
-    Button savebtn;
-    ImageView imageView;
-
     private static final int WRITE_EXTERNAL_STORAGE_CODE = 1;
+
+    private RequestQueue mQueue;        //JSON
+    private AlertDialog alertDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
-
         mQueue = Volley.newRequestQueue(this);
         jsonParse(EXTRA_URL);
 
+        ImageView imageView1 = findViewById(R.id.imageView1);
+        ImageView imageView2 = findViewById(R.id.imageView2);
 
-        imageView = findViewById(R.id.imageView1);
-        savebtn = findViewById(R.id.saveButton1);
-
-        savebtn.setOnClickListener(new View.OnClickListener() {
+        imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                        String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                        requestPermissions(permission, WRITE_EXTERNAL_STORAGE_CODE);
-                    } else {
-                        saveImage();
-                    }
-                }
+                createDownloadDialog(imageView1);
+            }
+        });
+
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createDownloadDialog(imageView2);
             }
         });
     }
 
 
-    private void saveImage() {
+    private void saveImage(ImageView imageView) {
         Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
         String time = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault())
                 .format(System.currentTimeMillis());
         File path = Environment.getExternalStorageDirectory();
         File dir = new File(path+"/DCIM");
-        String imagename = time + ".PNG";
-        File file = new File(dir, imagename);
+        String imageName = imageView
+                .getContentDescription()
+                .toString()
+                .replace("https://moodup.team/test/", "");
+        File file = new File(dir, imageName);
         OutputStream out;
 
         try {
             out = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();
 
@@ -119,8 +122,10 @@ public class RecipeActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             TextView tmpTV = findViewById(R.id.dishTitle);
-                                    //  dish name
+
+                            //  dish name
                             tmpTV.setText(response.getString("title"));
+
                             //  dish description
                             tmpTV = findViewById(R.id.dishDescription);
                             tmpTV.setText(response.getString("description"));
@@ -150,10 +155,17 @@ public class RecipeActivity extends AppCompatActivity {
                                     .load(jsonArray.getString(1)
                                             .replace("http://mooduplabs.com", "https://moodup.team"))
                                     .into((ImageView)findViewById(R.id.imageView1));
+                            ((ImageView)findViewById(R.id.imageView1))
+                                    .setContentDescription(jsonArray.getString(1)
+                                            .replace("http://mooduplabs.com", "https://moodup.team"));
+
                             Picasso.get()
                                     .load(jsonArray.getString(2)
                                             .replace("http://mooduplabs.com", "https://moodup.team"))
                                     .into((ImageView)findViewById(R.id.imageView2));
+                            ((ImageView)findViewById(R.id.imageView2))
+                                    .setContentDescription(jsonArray.getString(2)
+                                            .replace("http://mooduplabs.com", "https://moodup.team"));
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -170,31 +182,43 @@ public class RecipeActivity extends AppCompatActivity {
     }
 
 
-//    public void downloadImage(ImageButton imageView){
-//        BitmapDrawable drawable = (BitmapDrawable)imageView.getDrawable();
-//        Bitmap bitmap = drawable.getBitmap();
-//
-//        File filepath = Environment.getExternalStorageDirectory();
-//        File dir = new File(filepath.getAbsolutePath()+"/MoodApp/");
-//        dir.mkdir();
-//        File file = new File(dir, System.currentTimeMillis() + ".jpg");
-//        try {
-//            outputStream = new FileOutputStream(file);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-//        Toast.makeText(getApplicationContext(), "Image saved to ./MoodApp ^^",
-//                Toast.LENGTH_SHORT). show();
-//    }
-
     public void goMain(View view) {
-        //this.getParent().findViewById(R.id.optionsButton).setVisibility(View.VISIBLE);
         this.finish();
     }
 
 
+    public void createDownloadDialog(ImageView img) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        final View imageDownloadView = getLayoutInflater().inflate(R.layout.popup, null);
+        Button noButton = imageDownloadView.findViewById(R.id.buttonno);
+        Button yesButton = imageDownloadView.findViewById(R.id.buttonyes);
+        dialogBuilder.setView(imageDownloadView);
+        alertDialog = dialogBuilder.create();
 
-    
+
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                        String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                        requestPermissions(permission, WRITE_EXTERNAL_STORAGE_CODE);
+                    } else {
+                        saveImage(img);
+                    }
+                }
+                alertDialog.dismiss();
+            }
+        });
+        noButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+    }
+
     
 }

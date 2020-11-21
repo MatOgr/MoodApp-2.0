@@ -179,14 +179,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-                <Button
-                    android:id="@+id/saveButton1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SAVE"
-                    app:layout_constraintTop_toBottomOf="@id/imageView1"
-                    app:layout_constraintEnd_toEndOf="@id/imageView1"
-                    app:layout_constraintStart_toStartOf="@id/imageView1" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
