@@ -54,6 +54,7 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
         mQueue = Volley.newRequestQueue(this);
+        // loading data
         jsonParse(EXTRA_URL);
 
         ImageView imageView1 = findViewById(R.id.imageView1);
@@ -77,8 +78,6 @@ public class RecipeActivity extends AppCompatActivity {
 
     private void saveImage(ImageView imageView) {
         Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-        String time = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault())
-                .format(System.currentTimeMillis());
         File path = Environment.getExternalStorageDirectory();
         File dir = new File(path+"/DCIM");
         String imageName = imageView

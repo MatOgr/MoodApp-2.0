@@ -3,9 +3,6 @@ package com.example.moodapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -22,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_URL = "https://moodup.team/test/info.php";
 //    public Map<String, String> dictionary = new HashMap<>();
@@ -31,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //String test = loadString(EXTRA_URL);
-//////////////////////////////
+//////////////////////////////  JSON
         mQueue = Volley.newRequestQueue(this);
         jsonParseImg(EXTRA_URL);
         ///////////////////////////////////
@@ -71,9 +68,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public RequestQueue getmQueue() {
-        return mQueue;
-    }
 }
 
 //Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry">Kiranshastry</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>

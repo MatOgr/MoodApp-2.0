@@ -6,6 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginBehavior;
+import com.facebook.login.widget.LoginButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 public class OptionsActivity extends AppCompatActivity {
 
@@ -13,6 +19,13 @@ public class OptionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
+//        FacebookSdk.sdkInitialize(getApplicationContext());
+//        AppEventsLogger.activateApp(this);
+
+//        LoginButton loginButton = (LoginButton)findViewById(R.id.fb_login);
+//        FloatingActionButton fbButton = (FloatingActionButton) findViewById(R.id.fbButton);
+        // TODO: 21.11.2020 fb login - connect buttons
+        //fbButton.setOnClickListener();
     }
 
     public void goMain(View view) {
@@ -27,5 +40,7 @@ public class OptionsActivity extends AppCompatActivity {
     }
 
     // TODO: 17.11.2020 Facebook logging
-    public void FBLogIn() {}
+    public void FBLogIn() {
+
+    }
 }
