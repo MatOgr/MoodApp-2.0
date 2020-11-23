@@ -31,14 +31,16 @@
         app:srcCompat="@android:drawable/ic_input_add"
         app:tint="#FFFFFF" />
 
-<!--    <com.facebook.login.widget.LoginButton-->
-<!--        android:id="@+id/fb_login"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center_horizontal"-->
-<!--        app:layout_constraintTop_toTopOf="@id/fbButton"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/fbButton"-->
-<!--        android:visibility="gone"/>-->
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fbButton"
@@ -80,7 +82,7 @@
         app:layout_constraintGuide_begin="619dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/fb_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
@@ -109,4 +111,26 @@
         app:layout_constraintCircleRadius="5dp"
         app:layout_constraintEnd_toStartOf="@+id/recipeButton"
         app:layout_constraintTop_toTopOf="@+id/recipeButton" />
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/fb_photo"
+        android:layout_width="186dp"
+        android:layout_height="179dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fb_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fb_photo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

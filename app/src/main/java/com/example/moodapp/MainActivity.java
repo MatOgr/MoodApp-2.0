@@ -22,7 +22,6 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_URL = "https://moodup.team/test/info.php";
-//    public Map<String, String> dictionary = new HashMap<>();
     private RequestQueue mQueue;        //JSON
 
     @Override
