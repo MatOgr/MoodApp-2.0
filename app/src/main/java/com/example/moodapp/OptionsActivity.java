@@ -15,20 +15,27 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.login.Login;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Collections;
+
 
 public class OptionsActivity extends AppCompatActivity {
 
+    FloatingActionButton fbButton;
     private CallbackManager callbackManager;
-    private LoginButton loginButton;
+    //private LoginButton loginButton;
     private CircularImageView circularImageView;
     private TextView textView;
 
@@ -38,29 +45,35 @@ public class OptionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
-        loginButton = findViewById(R.id.login_button);
         callbackManager = CallbackManager.Factory.create();
+        fbButton = findViewById(R.id.fbButton);
+        fbButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginManager.getInstance().logInWithReadPermissions(OptionsActivity.this,
+                        Collections.singleton("email"));
+                LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        Log.d("Demo", "Login success");
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Log.d("Demo", "Login canceled");
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        Log.d("Demo", "Login error");
+                    }
+                });
+            }
+        });
+
         circularImageView = findViewById(R.id.fb_photo);
         textView = findViewById(R.id.fb_name);
 
-        //loginButton.setPermissions("user_gender");
-
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.d("Demo", "Login success");
-            }
-
-            @Override
-            public void onCancel() {
-                Log.d("Demo", "Login canceled");
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Log.d("Demo", "Login error");
-            }
-        });
 
         // TODO: 21.11.2020 fb login - connect buttons
     }
