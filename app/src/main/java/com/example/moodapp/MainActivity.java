@@ -63,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void showOptions(View view) {
         Intent intent = new Intent(this, OptionsActivity.class);
-        intent.putExtra(EXTRA_URL, EXTRA_URL);
+
+        intent.putExtra("url", EXTRA_URL);
+        //this.requestVisibleBehind(true);
         startActivity(intent);
     }
 

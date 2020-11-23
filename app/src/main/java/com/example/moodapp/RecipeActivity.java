@@ -55,7 +55,7 @@ public class RecipeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recipe);
         mQueue = Volley.newRequestQueue(this);
         // loading data
-        jsonParse(EXTRA_URL);
+        jsonParse(getIntent().getStringExtra("url"));
 
         ImageView imageView1 = findViewById(R.id.imageView1);
         ImageView imageView2 = findViewById(R.id.imageView2);

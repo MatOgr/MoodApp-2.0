@@ -35,9 +35,19 @@ public class OptionsActivity extends AppCompatActivity {
 
     FloatingActionButton fbButton;
     private CallbackManager callbackManager;
-    //private LoginButton loginButton;
     private CircularImageView circularImageView;
     private TextView textView;
+
+    AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
+        @Override
+        protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+            if (currentAccessToken == null) {
+                LoginManager.getInstance().logOut();
+                textView.setText("");
+                circularImageView.setImageResource(0);
+            }
+        }
+    };
 
 
     @Override
@@ -73,9 +83,6 @@ public class OptionsActivity extends AppCompatActivity {
 
         circularImageView = findViewById(R.id.fb_photo);
         textView = findViewById(R.id.fb_name);
-
-
-        // TODO: 21.11.2020 fb login - connect buttons
     }
 
 
@@ -110,17 +117,6 @@ public class OptionsActivity extends AppCompatActivity {
         graphRequest.executeAsync();
     }
 
-    AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
-        @Override
-        protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-            if (currentAccessToken == null) {
-                LoginManager.getInstance().logOut();
-                textView.setText("");
-                circularImageView.setImageResource(0);
-            }
-        }
-    };
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -133,12 +129,8 @@ public class OptionsActivity extends AppCompatActivity {
 
     public void showRecipe(View view) {
         Intent intent = new Intent(this, RecipeActivity.class);
+        intent.putExtra("url", getIntent().getStringExtra("url"));
         startActivity(intent);
         this.finish();
-    }
-
-    // TODO: 17.11.2020 Facebook logging
-    public void FBLogIn() {
-
     }
 }
