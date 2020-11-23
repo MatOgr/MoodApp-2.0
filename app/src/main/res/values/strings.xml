@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MoodApp</string>
+    <string name="facebook_app_id">711861183077792</string>
+    <string name="fb_login_protocol_scheme">fb711861183077792</string>
 </resources>

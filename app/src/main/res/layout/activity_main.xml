@@ -44,6 +44,7 @@
         android:layout_width="249dp"
         android:layout_height="254dp"
         android:alpha="0.6"
+        android:scaleType="centerCrop"
         app:civ_border="false"
         app:civ_shadow="true"
         app:civ_shadow_color="#6470B3"
@@ -54,7 +55,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/CircularImageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha="0.9"

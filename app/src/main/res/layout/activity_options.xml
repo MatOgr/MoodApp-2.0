@@ -11,7 +11,7 @@
     tools:context=".OptionsActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/optionsButton"
+        android:id="@+id/optionsButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -31,23 +31,24 @@
         app:srcCompat="@android:drawable/ic_input_add"
         app:tint="#FFFFFF" />
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
+        android:id="@+id/fbButton"
         android:layout_width="49dp"
         android:layout_height="51dp"
         android:layout_marginBottom="24dp"
         android:clickable="true"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_facebook"
+        android:src="@drawable/ic_facebook_logo"
         app:backgroundTint="#3F51B5"
         app:fabCustomSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/optionsButton"
-        app:layout_constraintEnd_toEndOf="@+id/optionsButton"
-        app:layout_constraintStart_toStartOf="@+id/optionsButton"
+        app:layout_constraintBottom_toTopOf="@+id/optionsButton2"
+        app:layout_constraintEnd_toEndOf="@+id/optionsButton2"
+        app:layout_constraintStart_toStartOf="@+id/optionsButton2"
         app:tint="#FFF" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton4"
+        android:id="@+id/recipeButton"
         android:layout_width="49dp"
         android:layout_height="51dp"
         android:layout_marginBottom="24dp"
@@ -57,10 +58,10 @@
         android:src="@drawable/ic_network"
         app:backgroundTint="@color/red_200"
         app:fabCustomSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton3"
-        app:layout_constraintEnd_toEndOf="@+id/floatingActionButton3"
+        app:layout_constraintBottom_toTopOf="@+id/fbButton"
+        app:layout_constraintEnd_toEndOf="@+id/fbButton"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/floatingActionButton3"
+        app:layout_constraintStart_toStartOf="@+id/fbButton"
         app:tint="#FFF" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -71,7 +72,7 @@
         app:layout_constraintGuide_begin="619dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/fb_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
@@ -81,9 +82,9 @@
         android:padding="5dp"
         android:text="Zaloguj przez Facebooka"
         android:textColor="#817C7C"
-        app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton3"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton3"
-        app:layout_constraintTop_toTopOf="@+id/floatingActionButton3" />
+        app:layout_constraintBottom_toBottomOf="@+id/fbButton"
+        app:layout_constraintEnd_toStartOf="@+id/fbButton"
+        app:layout_constraintTop_toTopOf="@+id/fbButton" />
 
     <TextView
         android:id="@+id/textView3"
@@ -96,8 +97,31 @@
         android:padding="5dp"
         android:text="Get the recipe"
         android:textColor="#817C7C"
-        app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton4"
+        app:layout_constraintBottom_toBottomOf="@+id/recipeButton"
         app:layout_constraintCircleRadius="5dp"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton4"
-        app:layout_constraintTop_toTopOf="@+id/floatingActionButton4" />
+        app:layout_constraintEnd_toStartOf="@+id/recipeButton"
+        app:layout_constraintTop_toTopOf="@+id/recipeButton" />
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/fb_photo"
+        android:layout_width="218dp"
+        android:layout_height="235dp"
+        android:layout_marginTop="120dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fb_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fb_photo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
